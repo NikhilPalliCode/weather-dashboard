@@ -1,6 +1,9 @@
 <div class="search">
   <form #form="ngForm" (submit)="onSubmit()">
-    <input type="text" class="searchbar" placeholder="Search city..." [(ngModel)]="cityName" name="city">
+    <div class="search-container">
+      <input type="text" class="searchbar" placeholder="Search city..." [(ngModel)]="cityName" name="city">
+      <button type="submit" class="search-button">Search</button>
+    </div>
   </form>
   <div class="toggle-container">
     <button (click)="toggleTemperatureUnit()" class="toggle-button">
@@ -13,7 +16,7 @@
 </div>
 
 @if (isLoading) {
-  <p>Loading...</p>
+  <div class="loading-spinner"></div>
 } @else {
   <div class="container">
     <div class="upper">
