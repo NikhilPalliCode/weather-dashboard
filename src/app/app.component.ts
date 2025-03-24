@@ -14,11 +14,9 @@ export class AppComponent implements OnInit {
   weatherData: any = {
     current: {},
     location: {},
-  };
+  }; // Initialize with empty objects
   cityName: string = 'Timisoara';
-  isLoading: boolean = true;
-  isCelsius: boolean = true; // Track temperature unit (Celsius by default)
-  isKmh: boolean = true; // Track wind speed unit (km/h by default)
+  isLoading: boolean = true; // Add loading state
 
   constructor(private weatherService: WeatherService) {}
 
@@ -28,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isLoading = true;
+    this.isLoading = true; // Set loading to true when fetching new data
     this.getWeatherData(this.cityName);
     this.cityName = '';
   }
@@ -42,11 +40,11 @@ export class AppComponent implements OnInit {
         } else {
           console.error('Invalid data received from the API');
         }
-        this.isLoading = false;
+        this.isLoading = false; // Set loading to false after data is fetched
       },
       (error) => {
         console.error('Error fetching weather data:', error);
-        this.isLoading = false;
+        this.isLoading = false; // Set loading to false even if there's an error
       }
     );
   }
