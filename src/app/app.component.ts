@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-root',
   imports: [RouterOutlet, FormsModule, DecimalPipe],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'], // Corrected 'styleUrl' to 'styleUrls'
+  styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
   weatherData: any = {
@@ -17,8 +17,6 @@ export class AppComponent implements OnInit {
   }; // Initialize with empty objects
   cityName: string = 'Timisoara';
   isLoading: boolean = true; // Add loading state
-  isCelsius: boolean = true; // Default to Celsius
-  isKmh: boolean = true;     // Default to km/h
 
   constructor(private weatherService: WeatherService) {}
 
