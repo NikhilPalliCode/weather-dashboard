@@ -16,13 +16,9 @@ export class AppComponent implements OnInit {
     location: {},
   };
   cityName: string = 'Timisoara';
-<<<<<<< HEAD
-  isLoading: boolean = true; // Add loading state
-=======
   isLoading: boolean = true;
   isCelsius: boolean = true; // Track temperature unit (Celsius by default)
   isKmh: boolean = true; // Track wind speed unit (km/h by default)
->>>>>>> unit-conversion
 
   constructor(private weatherService: WeatherService) {}
 
