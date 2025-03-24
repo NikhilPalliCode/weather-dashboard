@@ -1,11 +1,14 @@
 <div class="search">
   <form #form="ngForm" (submit)="onSubmit()">
-    <input type="text" class="searchbar" placeholder="Search city..." [(ngModel)]="cityName" name="city">
+    <div class="search-container">
+      <input type="text" class="searchbar" placeholder="Search city..." [(ngModel)]="cityName" name="city">
+      <button type="submit" class="search-button">Search</button>
+    </div>
   </form>
 </div>
 
 @if (isLoading) {
-  <p>Loading...</p>
+  <div class="loading-spinner"></div>
 } @else {
   <div class="container">
     <div class="upper">
@@ -18,7 +21,11 @@
       <div class="weather-data">
         <div class="location">{{ weatherData.location?.name }}</div>
         <div class="temperature">
+<<<<<<< HEAD
           {{ weatherData.current?.temp_c | number: '1.0-0' }}°C
+=======
+          {{ isCelsius ? (weatherData.current?.temp_c | number: '1.0-0') : (weatherData.current?.temp_f | number: '1.0-0') }}°{{ isCelsius ? 'C' : 'F' }}
+>>>>>>> unit-conversion
         </div>
         <div class="inf">{{ weatherData.current?.condition?.text }}</div>
       </div>
@@ -35,7 +42,11 @@
             <span>min</span>
           </div>
           <div class="info-block-value">
+<<<<<<< HEAD
             {{ weatherData.current?.dewpoint_c }}°C
+=======
+            {{ isCelsius ? weatherData.current?.dewpoint_c : weatherData.current?.dewpoint_f }}°{{ isCelsius ? 'C' : 'F' }}
+>>>>>>> unit-conversion
           </div>
         </div>
 
@@ -45,7 +56,11 @@
             <span>max</span>
           </div>
           <div class="info-block-value">
+<<<<<<< HEAD
             {{ weatherData.current?.heatindex_c }}°C
+=======
+            {{ isCelsius ? weatherData.current?.heatindex_c : weatherData.current?.heatindex_f }}°{{ isCelsius ? 'C' : 'F' }}
+>>>>>>> unit-conversion
           </div>
         </div>
 
@@ -65,7 +80,11 @@
             <span>wind</span>
           </div>
           <div class="info-block-value">
+<<<<<<< HEAD
             {{ weatherData.current?.wind_kph }} km/h
+=======
+            {{ isKmh ? weatherData.current?.wind_kph : weatherData.current?.wind_mph }} {{ isKmh ? 'km/h' : 'mph' }}
+>>>>>>> unit-conversion
           </div>
         </div>
       </div>
