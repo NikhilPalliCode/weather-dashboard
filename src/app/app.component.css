@@ -1,19 +1,22 @@
+/* Main Container */
 .container {
   width: 400px;
-  height: 80vh;
+  min-height: 80vh;
   border-radius: 20px;
   box-shadow: 10px 10px 10px 10px rgba(26, 26, 48, 0.2);
   background: linear-gradient(135deg, #1e3c72, #2a5298);
   color: white;
   overflow: hidden;
   margin: 20px auto;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Upper Section - Weather Display */
 .upper {
   position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 50%;
+  flex: 1;
+  min-height: 50%;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -31,75 +34,94 @@
 .weather-data {
   position: relative;
   z-index: 1;
-  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .location {
   font-size: 1.5em;
   margin-bottom: 10px;
+  word-break: break-word;
+  text-align: center;
 }
 
 .temperature {
   font-size: 4em;
   font-weight: 900;
+  line-height: 1;
+  margin: 10px 0;
 }
 
 .inf {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-style: italic;
+  margin-top: 10px;
 }
 
+/* Lower Section - Additional Info */
 .lower {
   padding: 1em;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
 .more-info-label {
   font-size: 1.2em;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .more-info-container {
-  flex: 1;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
-  padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
+  padding: 15px 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
 }
 
 .info-block {
-  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 0;
+}
+
+.info-block-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
 .info-block-label img {
-  width: 2em;
+  width: 32px;
+  height: 32px;
   filter: invert(100%);
+  margin-bottom: 5px;
 }
 
 .info-block-label span {
   font-size: 0.9em;
-  margin-top: 5px;
 }
 
 .info-block-value {
   font-size: 1.2em;
-  margin-top: 5px;
+  font-weight: 500;
+  text-align: center;
+  min-height: 1.5em;
 }
 
+/* Search and Toggle Components */
 .search {
-  margin: 1em;
+  margin: 1em auto;
+  width: 90%;
+  max-width: 400px;
   text-align: center;
 }
 
@@ -108,9 +130,9 @@
   border: none;
   outline: none;
   border-radius: 20px;
-  padding: 1em;
+  padding: 12px 15px;
   color: white;
-  font-size: 0.8em;
+  font-size: 0.9em;
   text-align: center;
   width: 100%;
   box-sizing: border-box;
@@ -154,6 +176,6 @@
   
   .more-info-container {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
 }
