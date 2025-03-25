@@ -1,4 +1,35 @@
 <div class="search">
+  <form #form="ngForm" (submit)="onSubmit()" class="search-form">
+    <div class="search-group">
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Search city......" 
+        [(ngModel)]="cityName" 
+        name="city"
+        required
+      >
+      <button type="submit" class="search-button">
+        <span class="search-icon">🔍</span>
+        Search
+      </button>
+    </div>
+    <div class="toggle-container">
+      <button 
+        (click)="toggleTemperatureUnit()" 
+        class="toggle-button"
+        aria-label="Toggle temperature unit"
+      >
+        {{ isCelsius ? '°F' : '°C' }}
+      </button>
+      <button 
+        (click)="toggleWindSpeedUnit()" 
+        class="toggle-button"
+        aria-label="Toggle wind speed unit"
+      >
+        {{ isKmh ? 'mph' : 'km/h' }}
+      </button>
+    </div>
   <form #form="ngForm" (submit)="onSubmit()">
     <input type="text" class="searchbar" placeholder="Search city..." [(ngModel)]="cityName" name="city">
   </form>
