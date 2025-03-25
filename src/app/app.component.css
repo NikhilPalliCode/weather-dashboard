@@ -1,22 +1,19 @@
-/* Main Container */
 .container {
   width: 400px;
-  min-height: 80vh;
+  height: 80vh;
   border-radius: 20px;
   box-shadow: 10px 10px 10px 10px rgba(26, 26, 48, 0.2);
   background: linear-gradient(135deg, #1e3c72, #2a5298);
   color: white;
   overflow: hidden;
   margin: 20px auto;
-  display: flex;
-  flex-direction: column;
 }
 
-/* Upper Section - Weather Display */
 .upper {
   position: relative;
-  flex: 1;
-  min-height: 50%;
+  overflow: hidden;
+  width: 100%;
+  height: 50%;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -34,94 +31,75 @@
 .weather-data {
   position: relative;
   z-index: 1;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  box-sizing: border-box;
+  text-align: center;
 }
 
 .location {
   font-size: 1.5em;
   margin-bottom: 10px;
-  word-break: break-word;
-  text-align: center;
 }
 
 .temperature {
   font-size: 4em;
   font-weight: 900;
-  line-height: 1;
-  margin: 10px 0;
 }
 
 .inf {
   font-size: 1.2em;
   font-style: italic;
-  margin-top: 10px;
 }
 
-/* Lower Section - Additional Info */
 .lower {
   padding: 1em;
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
 }
 
 .more-info-label {
   font-size: 1.2em;
-  margin-bottom: 15px;
-  text-align: center;
+  margin-bottom: 10px;
 }
 
 .more-info-container {
+  flex: 1;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
-  padding: 15px 10px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .info-block {
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.info-block-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 5px;
+  margin: 10px 0;
 }
 
 .info-block-label img {
-  width: 32px;
-  height: 32px;
+  width: 2em;
   filter: invert(100%);
-  margin-bottom: 5px;
 }
 
 .info-block-label span {
   font-size: 0.9em;
+  margin-top: 5px;
 }
 
 .info-block-value {
   font-size: 1.2em;
-  font-weight: 500;
-  text-align: center;
-  min-height: 1.5em;
+  margin-top: 5px;
 }
 
-/* Search and Toggle Components */
 .search {
-  margin: 1em auto;
-  width: 90%;
-  max-width: 400px;
+  margin: 1em;
   text-align: center;
 }
 
@@ -130,52 +108,10 @@
   border: none;
   outline: none;
   border-radius: 20px;
-  padding: 12px 15px;
+  padding: 1em;
   color: white;
-  font-size: 0.9em;
+  font-size: 0.8em;
   text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.toggle-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-  flex-wrap: wrap;
-}
-
-.toggle-button {
-  padding: 8px 16px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: none;
-  border-radius: 20px;
-  color: white;
-  cursor: pointer;
-  font-size: 0.9em;
-  transition: all 0.3s ease;
-  min-width: 60px;
-}
-
-.toggle-button:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 480px) {
-  .container {
-    width: 95%;
-    min-height: 85vh;
-  }
-  
-  .temperature {
-    font-size: 3em;
-  }
-  
-  .more-info-container {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
+  width: 80%;
+  max-width: 300px;
 }
