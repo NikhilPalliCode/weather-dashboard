@@ -112,6 +112,48 @@
   color: white;
   font-size: 0.8em;
   text-align: center;
-  width: 80%;
-  max-width: 300px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.toggle-button {
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  min-width: 60px;
+}
+
+.toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    min-height: 85vh;
+  }
+  
+  .temperature {
+    font-size: 3em;
+  }
+  
+  .more-info-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
