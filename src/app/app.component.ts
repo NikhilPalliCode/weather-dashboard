@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-
 export class AppComponent implements OnInit {
   weatherData: any = {
     current: {},
