@@ -1,6 +1,6 @@
 <div class="search">
   <form #form="ngForm" (submit)="onSubmit()">
-    <input type="text" class="searchbar" placeholder="Search city..." [(ngModel)]="cityName" name="city">
+    <input type="text" class="searchbar" placeholder="Enter city..." [(ngModel)]="cityName" name="city">
   </form>
   <div class="toggle-container">
     <button (click)="toggleTemperatureUnit()" class="toggle-button">
