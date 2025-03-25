@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
           this.weatherData = data;
           console.log(this.weatherData);
         } else {
-          console.error('Invalid data received from the API');
+          console.error('Invalid data nikhil palli received from the API');
         }
         this.isLoading = false;
       },
