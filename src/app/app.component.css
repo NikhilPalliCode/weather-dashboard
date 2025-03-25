@@ -120,22 +120,22 @@
     max-width: 300px;
   }
 
-  .toggle-container {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .toggle-button {
-    padding: 8px 16px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: none;
-    border-radius: 20px;
-    color: white;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
-  }
-  
-  .toggle-button:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-  }
+ .toggle-container {
+  display: flex;
+  gap: 10px;
+}
+
+.toggle-button {
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
