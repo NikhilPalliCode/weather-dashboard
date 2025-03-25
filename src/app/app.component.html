@@ -1,83 +1,107 @@
 <div class="search">
-  <form #form="ngForm" (submit)="onSubmit()">
-    <input type="text" class="searchbar" placeholder="Search city..." [(ngModel)]="cityName" name="city">
+  <form #form="ngForm" (submit)="onSubmit()" class="search-form">
+    <div class="search-group">
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Search city..." 
+        [(ngModel)]="cityName" 
+        name="city"
+        required
+      >
+      <button type="submit" class="search-button">
+        <span class="search-icon">🔍</span>
+        Search
+      </button>
+    </div>
+    <div class="toggle-container">
+      <button 
+        (click)="toggleTemperatureUnit()" 
+        class="toggle-button"
+        aria-label="Toggle temperature unit"
+      >
+        {{ isCelsius ? '°F' : '°C' }}
+      </button>
+      <button 
+        (click)="toggleWindSpeedUnit()" 
+        class="toggle-button"
+        aria-label="Toggle wind speed unit"
+      >
+        {{ isKmh ? 'mph' : 'km/h' }}
+      </button>
+    </div>
   </form>
-  <div class="toggle-container">
-    <button (click)="toggleTemperatureUnit()" class="toggle-button">
-      {{ isCelsius ? '°F' : '°C' }}
-    </button>
-    <button (click)="toggleWindSpeedUnit()" class="toggle-button">
-      {{ isKmh ? 'mph' : 'km/h' }}
-    </button>
-  </div>
 </div>
 
 @if (isLoading) {
-  <p>Loading...</p>
+  <div class="loading-container">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Fetching weather data...</p>
+  </div>
 } @else {
-  <div class="container">
-    <div class="upper">
-      @if (weatherData.current?.temp_c < 15) {
-        <img src="https://www.findingtheuniverse.com/wp-content/uploads/2017/01/Blue2Bhour2BFinland_by_Laurence2BNorah.jpg" alt="">
-      }
-      @else {
-        <img src="https://scopeblog.stanford.edu/wp-content/uploads/2022/07/AdobeStock_268489083-scaled.jpeg" alt="">
-      }
-      <div class="weather-data">
-        <div class="location">{{ weatherData.location?.name }}</div>
-        <div class="temperature">
-          {{ isCelsius ? (weatherData.current?.temp_c | number: '1.0-0') : (weatherData.current?.temp_f | number: '1.0-0') }}°{{ isCelsius ? 'C' : 'F' }}
-        </div>
-        <div class="inf">{{ weatherData.current?.condition?.text }}</div>
+<div class="container">
+  <div class="upper">
+    @if (weatherData.current?.temp_c < 15) {
+      <img src="https://www.findingtheuniverse.com/wp-content/uploads/2017/01/Blue2Bhour2BFinland_by_Laurence2BNorah.jpg" alt="Cold weather background">
+    }
+    @else {
+      <img src="https://scopeblog.stanford.edu/wp-content/uploads/2022/07/AdobeStock_268489083-scaled.jpeg" alt="Warm weather background">
+    }
+    <div class="weather-data">
+      <div class="location">{{ weatherData.location?.name }}</div>
+      <div class="temperature">
+        {{ isCelsius ? (weatherData.current?.temp_c | number: '1.0-0') : (weatherData.current?.temp_f | number: '1.0-0') }}°{{ isCelsius ? 'C' : 'F' }}
       </div>
+      <div class="inf">{{ weatherData.current?.condition?.text }}</div>
     </div>
-    <div class="lower">
-      <div class="more-info-label">
-        More Information
+  </div>
+  <div class="lower">
+    <div class="more-info-label">
+      More Information
+    </div>
+
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img class="min-img" src="https://cdn-icons-png.flaticon.com/512/5118/5118028.png" alt="Minimum temperature">
+          <span>min</span>
+        </div>
+        <div class="info-block-value">
+          {{ isCelsius ? weatherData.current?.dewpoint_c : weatherData.current?.dewpoint_f }}°{{ isCelsius ? 'C' : 'F' }}
+        </div>
       </div>
 
-      <div class="more-info-container">
-        <div class="info-block">
-          <div class="info-block-label">
-            <img class="min-img" src="https://cdn-icons-png.flaticon.com/512/5118/5118028.png" alt="">
-            <span>min</span>
-          </div>
-          <div class="info-block-value">
-            {{ isCelsius ? weatherData.current?.dewpoint_c : weatherData.current?.dewpoint_f }}°{{ isCelsius ? 'C' : 'F' }}
-          </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="https://cdn-icons-png.flaticon.com/512/1843/1843544.png" alt="Maximum temperature">
+          <span>max</span>
         </div>
-
-        <div class="info-block">
-          <div class="info-block-label">
-            <img src="https://cdn-icons-png.flaticon.com/512/1843/1843544.png" alt="">
-            <span>max</span>
-          </div>
-          <div class="info-block-value">
-            {{ isCelsius ? weatherData.current?.heatindex_c : weatherData.current?.heatindex_f }}°{{ isCelsius ? 'C' : 'F' }}
-          </div>
+        <div class="info-block-value">
+          {{ isCelsius ? weatherData.current?.heatindex_c : weatherData.current?.heatindex_f }}°{{ isCelsius ? 'C' : 'F' }}
         </div>
+      </div>
 
-        <div class="info-block">
-          <div class="info-block-label">
-            <img src="https://static.thenounproject.com/png/1512650-200.png" alt="">
-            <span>humidity</span>
-          </div>
-          <div class="info-block-value">
-            {{ weatherData.current?.humidity }}%
-          </div>
-        </div>  
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="https://static.thenounproject.com/png/1512650-200.png" alt="Humidity">
+          <span>humidity</span>
+        </div>
+        <div class="info-block-value">
+          {{ weatherData.current?.humidity }}%
+        </div>
+      </div>  
 
-        <div class="info-block">
-          <div class="info-block-label">
-            <img src="https://icon-library.com/images/wind-icon-png/wind-icon-png-27.jpg" alt="">
-            <span>wind</span>
-          </div>
-          <div class="info-block-value">
-            {{ isKmh ? weatherData.current?.wind_kph : weatherData.current?.wind_mph }} {{ isKmh ? 'km/h' : 'mph' }}
-          </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="https://icon-library.com/images/wind-icon-png/wind-icon-png-27.jpg" alt="Wind speed">
+          <span>wind</span>
+        </div>
+        <div class="info-block-value">
+          {{ isKmh ? weatherData.current?.wind_kph : weatherData.current?.wind_mph }} {{ isKmh ? 'km/h' : 'mph' }}
         </div>
       </div>
     </div>
   </div>
+</div>
 }
 <router-outlet></router-outlet>
